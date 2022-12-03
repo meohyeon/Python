@@ -4,7 +4,8 @@ print("수 입력") # ex 1 2 3 4
 n = list(map(int,input().split()))
 answer = 0
     
-a=([sum(a) for a in combinations(n,3)])
+a=[sum(a) for a in combinations(n,3)]
+print(a)
 for i in a:
     count = 0      
     for j in range(2,i): 
