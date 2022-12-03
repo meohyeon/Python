@@ -5,4 +5,4 @@ a, b = map(int, input().split())
 gcd = math.gcd(a, b)
 lcm = math.lcm(a, b)
 
-print("최대공약수 : " +str(gcd)+ " 최소공배수 : " + str(lcm))
+print("최대공약수 : " +gcd+ " 최소공배수 : " + str(lcm))
