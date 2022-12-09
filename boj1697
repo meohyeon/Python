@@ -1,0 +1,21 @@
+from collections import deque
+n,k = map(int,input().split())
+lis = [-1]*200005
+
+que = deque()
+que.append(n)
+
+lis[n]=0
+
+
+while lis[k] == -1 :
+    a = que.popleft()
+    for i in (a-1,a+1,a*2):
+        if i < 0 or i > 200000:
+            continue
+        if lis[i] != -1:
+            continue
+        lis[i] = lis[a] +1 
+        que.append(i)            
+
+print(lis[k])
