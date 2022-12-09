@@ -1,0 +1,53 @@
+from collections import deque
+n, k = map(int, input().split())
+grp = []
+for i in range(n):
+    grp.append(list(input()))
+dx = [-1, 1, 0 ,0]
+dy = [0, 0, 1, -1]
+
+visit1 = [[-1]*k for y in range(n)] #불
+visit2 = [[-1]*k for y in range(n)] #사람 
+que1=deque()
+que2=deque()
+
+for i in range(n):
+    for j in range(k):
+        if grp[i][j] == 'F':
+            que1.append((i,j))
+            visit1[i][j] = 0
+        if grp[i][j] == 'J':
+            que2.append((i,j))
+            visit2[i][j] = 0
+
+answer=0
+def q():   
+    while que1:
+        a,b = que1.popleft()
+        for i in range(4):
+            bx = a + dx[i]
+            by = b + dy[i]
+            if bx < 0 or bx >= n or by < 0 or by >= k:
+                continue
+            if visit1[bx][by] >= 0 or grp[bx][by] == '#':
+                continue
+            visit1[bx][by] = visit1[a][b]+1
+            que1.append((bx,by))
+    
+    while que2:
+        a,b = que2.popleft()
+        for i in range(4):
+            bx = a + dx[i]
+            by = b + dy[i]
+            if bx < 0 or bx >= n or by < 0 or by >= k:
+                return visit2[a][b]+1
+            if visit2[bx][by] >= 0 or grp[bx][by] == '#':
+                continue
+            if visit1[bx][by] != -1 and visit1[bx][by] <= visit2[a][b]+1:
+                continue
+            visit2[bx][by] = visit2[a][b]+1
+            que2.append((bx,by))
+
+    return 'IMPOSSIBLE'
+
+print(q())
