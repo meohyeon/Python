@@ -1,0 +1,41 @@
+from collections import deque
+n, k = map(int, input().split())
+grp = []
+for i in range(k):
+    grp.append(list(map(int,input().split())))
+
+dx = [-1, 1, 0 ,0]
+dy = [0, 0, 1, -1]
+
+visit = [[0 for x in range(1002)]for y in range(1002)]
+
+
+que = deque()
+
+for i in range(k):
+    for j in range(n):
+        if grp[i][j] == 1:
+            que.append((i,j))
+        if grp[i][j] == 0:
+            visit[i][j] = -1
+while que:
+    a,b = que.popleft()
+    for i in range(4):
+        bx = a + dx[i]
+        by = b + dy[i]
+        if bx < 0 or bx >= k or by < 0 or by >= n:
+            continue
+        if visit[bx][by] >= 0:
+            continue
+        visit[bx][by] = visit[a][b]+1
+        que.append((bx,by))
+mx = 0
+for i in range(k):
+    for j in range(n):
+        if visit[i][j] == -1:
+            mx = -1
+            break
+        mx = max(mx,visit[i][j])
+    if(mx == -1):
+        break
+print(mx)
