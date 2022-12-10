@@ -1,0 +1,27 @@
+while True:
+    n = input()
+    a = []
+    temp = True
+    if n[0] == '.':
+        break
+    for i in n:
+        if i == '[' or i == '(':
+            a.append(i)
+        elif i == ']':
+            if len(a) != 0 and a[-1] == '[':
+               a.pop()
+            else:
+                temp = False
+                break
+        elif i == ')':
+            if len(a) != 0 and a[-1] == '(':
+               a.pop()
+            else:
+                temp = False
+                break
+    
+    if len(a) == 0 and temp == True:
+        print("yes")
+    else:
+        print('no')
+    
