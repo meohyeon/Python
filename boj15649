@@ -1,5 +1,5 @@
 n, m = map(int,input().split())
-lis = [0]*(n+1)
+vit = [0]*(n+1)
 arr = [0]*(n+1)
 def back(a):
     if a == m:
@@ -8,11 +8,11 @@ def back(a):
         print(end="\n")
         return
     for i in range(1,n+1):
-        if lis[i] != 1:
+        if vit[i] != 1:
             arr[a] = i
-            lis[i]=1
+            vit[i]=1
             back(a+1)
-            lis[i]=0
+            vit[i]=0
     
 
 
