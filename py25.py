@@ -1,3 +1,5 @@
+# 프로그래머스 n queen level 2
+
 n = int(input())
 
 def solution(n):
