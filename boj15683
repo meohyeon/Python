@@ -1,0 +1,62 @@
+import copy
+
+answer = int(1e9)
+def dfs(cnt,graph):
+    global answer
+    if cnt == len(cctvlist):
+        total = 0
+        for i in graph:
+            total += i.count(0)
+        answer = min(answer,total)
+        return
+    a, b, type = cctvlist[cnt]
+    for z in vector[type]:
+        list = copy.deepcopy(graph)
+        search(a,b,list,z)
+        dfs(cnt+1,list)
+        
+
+def search(x,y,graph,direction):
+    for q in direction:
+        nx = x
+        ny = y
+        while True:          
+            nx += dx[q]
+            ny += dy[q]
+            if 0 <= nx < n and 0 <= ny < m:
+                if graph[nx][ny] == 6:
+                    break
+                elif graph[nx][ny] == 0:
+                    graph[nx][ny] = 7
+            else:
+                break
+        
+        
+         
+
+
+
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+
+vector = {
+    1 : [[0],[1],[2],[3]],
+    2 : [[0,1],[2,3]],
+    3 : [[0,2],[0,3],[1,2],[1,3]],
+    4 : [[0,1,2],[0,1,3],[0,2,3],[1,2,3]],
+    5 : [[0,1,2,3]]
+}
+
+
+cctvlist = []
+
+n, m = map(int, input().split())
+map = [list(map(int, input().split()))for _ in range(n)]
+
+for i in range(n):
+    for j in range(m):
+        if 1 <= map[i][j] <= 5:
+            cctvlist.append([i,j,map[i][j]])
+
+dfs(0,map)
+print(answer)
