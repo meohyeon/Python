@@ -36,15 +36,16 @@ for i in range(k):
     a, b = size[i]
     draw = sticker[i]
     cnt = 0
-    
     while cnt < 4:     
         if a > n or b > m :
             a, b, draw = b, a, change(draw,a,b)
             cnt +=1
             continue
         bol = False
-        for z in range(n-a+1):
-            for x in range(m-b+1):          
+        for z in range(n):
+            for x in range(m):
+                if z+a > n or x+b >m:
+                    break           
                 if search(z,x,draw,a,b):
                     attection(z,x,draw,a,b)
                     bol = True
