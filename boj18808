@@ -1,0 +1,64 @@
+n, m, k = map(int, input().split())
+
+maps = [[0 for _ in range(m)] for _ in range(n)]
+
+sticker = [[]for _ in range(k)]
+size = []
+answer = 0
+for i in range(k):
+    size.append(list(map(int,input().split())))
+    
+    for j in range(size[i][0]):
+        sticker[i].append(list(map(int, input().split())))
+
+def search(x,y,graph,sx,sy):
+    for i in range(sx):
+        for j in range(sy):
+            if graph[i][j] == 1 and maps[x+i][y+j] == 1:             
+                return False  
+    return True
+
+def attection(x,y,graph,sx,sy):
+    for i in range(sx):
+        for j in range(sy):
+            if graph[i][j] == 1:
+                maps[x+i][y+j] = 1
+
+def change(graph,x,y):
+    grp = [[0]*x for _ in range(y)]
+    for i in range(y):
+        for j in range(x):
+            grp[i][j] = graph[x-j-1][i]
+
+    return grp 
+
+for i in range(k):
+    a, b = size[i]
+    draw = sticker[i]
+    cnt = 0
+    
+    while cnt < 4:     
+        if a > n or b > m :
+            a, b, draw = b, a, change(draw,a,b)
+            cnt +=1
+            continue
+        bol = False
+        for z in range(n-a+1):
+            for x in range(m-b+1):          
+                if search(z,x,draw,a,b):
+                    attection(z,x,draw,a,b)
+                    bol = True
+                    break
+            if bol:
+                break
+        if bol:
+            break
+        else:
+            cnt += 1
+            a, b, draw = b, a, change(draw,a,b)
+        
+for i in range(n):
+    for j in range(m):
+        if maps[i][j] == 1:
+            answer += 1
+print(answer)
