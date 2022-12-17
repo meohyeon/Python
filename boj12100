@@ -1,0 +1,87 @@
+import copy
+n = int(input())
+
+maps = [list(map(int, input().split()))for _ in range(n)]
+
+answer = 0
+def move(cnt,graph):
+    if cnt == 0: # 상
+        for j in range(n):
+            tmp = 0
+            index = 0
+            for i in range(1,n):
+                if graph[i][j] != 0:
+                    tmp = graph[i][j]
+                    graph[i][j] = 0
+                    if graph[index][j] == 0:
+                        graph[index][j] = tmp
+                    elif graph[index][j] == tmp:
+                        graph[index][j] = tmp*2
+                        index +=1
+                    else:
+                        index += 1
+                        graph[index][j] = tmp
+    elif cnt == 1: # 하
+        for j in range(n):
+            tmp = 0
+            index = n-1
+            for i in range(n-2,-1,-1):
+                if graph[i][j] != 0:
+                    tmp = graph[i][j]
+                    graph[i][j] = 0
+                    if graph[index][j] == 0:
+                        graph[index][j] = tmp
+                    elif graph[index][j] == tmp:
+                        graph[index][j] = tmp*2
+                        index -=1
+                    else:
+                        index -= 1
+                        graph[index][j] = tmp    
+    elif cnt == 2: # 좌      
+        for i in range(n):
+            tmp = 0
+            index = 0
+            for j in range(1,n):
+                if graph[i][j] != 0:
+                    tmp = graph[i][j]
+                    graph[i][j] = 0
+                    if graph[i][index] == 0:
+                        graph[i][index] = tmp
+                    elif graph[i][index] == tmp:
+                        graph[i][index] = tmp*2
+                        index +=1
+                    else:
+                        index += 1
+                        graph[i][index] = tmp
+    else: #우
+        for i in range(n):
+            tmp = 0
+            index = n-1
+            for j in range(n-2,-1,-1):
+                if graph[i][j] != 0:
+                    tmp = graph[i][j]
+                    graph[i][j] = 0
+                    if graph[i][index] == 0:
+                        graph[i][index] = tmp
+                    elif graph[i][index] == tmp:
+                        graph[i][index] = tmp*2
+                        index -=1
+                    else:
+                        index -= 1
+                        graph[i][index] = tmp    
+
+    return graph
+
+def search(count,graph):
+    global answer
+    if count == 5:
+        for i in range(n):
+            for j in range(n):
+                answer = max(answer,graph[i][j])
+        return
+    else:
+        for i in range(4):
+            list = move(i,copy.deepcopy(graph))
+            search(count+1,list)
+search(0,maps)
+print(answer)
