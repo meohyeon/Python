@@ -1,0 +1,28 @@
+from itertools import combinations
+n, m = map(int,input().split())
+
+maps = [list(map(int,input().split()))for _ in range(n)]
+
+chicknpoint = []
+homepoint = []
+
+for i in range(n):
+    for j in range(n):
+        if maps[i][j] == 2:
+            chicknpoint.append((i,j))
+        elif maps[i][j] == 1:
+            homepoint.append((i,j))
+answer = 1000000
+for chickn in combinations(chicknpoint,m):
+    total = 0
+    for x,y in homepoint:
+        distance = 1000000
+        for nx,ny in chickn:
+            distance = min(distance,abs(x-nx)+abs(y-ny)) #현재 집에서 갈수있는 치킨집들 간의 거리중 최소값 받음          
+        total += distance #각집에서 치킨집까지 의 거리 최소값을 합함
+    answer = min(total,answer) #모든 경우의 수 돌면서 제일 작은값 탐색 
+            
+        
+
+
+print(answer)
