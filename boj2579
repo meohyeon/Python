@@ -1,0 +1,22 @@
+n = int(input())
+
+arr = []
+
+for i in range(n):
+    arr.append(int(input()))
+
+weight = [0]*(n+1)
+
+if n == 1:
+    print(arr[0])
+elif n == 2:
+    print(arr[0] + arr[1])
+   
+else:
+    weight[0] = arr[0]
+    weight[1] = arr[0] + arr[1]
+    weight[2] = max(arr[0]+arr[2],arr[1]+arr[2])
+    for i in range(3,n):
+        weight[i] = max(weight[i-2]+arr[i],arr[i]+arr[i-1]+weight[i-3])
+
+    print(weight[n-1])
