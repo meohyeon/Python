@@ -1,0 +1,12 @@
+n, m = map(int, input().split())
+integer = list(map(int,input().split()))
+simul=[list(map(int,input().split()))for _ in range(m)]
+
+arr = [0]
+a = 0
+for i in integer:
+    a += i
+    arr.append(a)
+
+for a,b in simul:
+    print(arr[b]-arr[a-1])
