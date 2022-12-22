@@ -1,3 +1,4 @@
+# 프로그래머스 다음 큰 숫자 level2
 n = int(input())
 
 answer = 0
