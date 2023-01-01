@@ -1,0 +1,15 @@
+case = int(input())
+boolean = True
+
+for i in range(case):
+    m, n, x, y = map(int,input().split())
+    boolean = True
+    while x<=m*n:
+        if x%n == y%n:
+            print(x)
+            boolean=False
+            break
+        x += m
+        
+    if boolean:
+        print(-1)
