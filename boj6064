@@ -5,7 +5,7 @@ for i in range(case):
     m, n, x, y = map(int,input().split())
     boolean = True
     while x<=m*n:
-        if x%n == y%n:
+        if (x-y)%n==0:
             print(x)
             boolean=False
             break
