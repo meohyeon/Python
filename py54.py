@@ -1,3 +1,4 @@
+# 프로그래머스 짝수와 홀수
 num = int(input())
 
 answer = ''
