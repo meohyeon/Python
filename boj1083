@@ -13,7 +13,5 @@ for i in range(n-1):
     s -= idx-i
     for j in range(idx,i,-1):
         arr[j] = arr[j-1]
-    print(arr)
     arr[i] = value
-    
 print(*arr)
