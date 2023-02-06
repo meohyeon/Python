@@ -1,4 +1,4 @@
-
+# 프로그래머스 괄호 회전하기 level2
 s = input()
 answer = 0
 for i in range(len(s)):
