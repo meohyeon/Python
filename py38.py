@@ -1,3 +1,4 @@
+#프로그래머스 귤 고르기
 k = int(input())
 tangerine = list(map(int, input().split()))
 total = 0
