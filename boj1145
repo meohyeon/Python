@@ -1,0 +1,11 @@
+arr = list(map(int,input().split()))
+value  = min(arr)
+while True:
+    cnt = 0 
+    for i in arr:
+        if value % i == 0:
+            cnt +=1
+    if cnt >= 3:
+        break 
+    value +=1 
+print(value)
