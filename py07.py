@@ -8,3 +8,7 @@ for i in range(1,10):
     if i not in numbers:
         total += i
 print(total)
+
+# 다른 방법
+total2 = [x for x in range(10) if x not in numbers]
+print(sum(total2))
