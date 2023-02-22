@@ -1,3 +1,4 @@
+# 프로그래머스 행렬의 곱셈 level2
 arr1 = [[2, 3, 2], [4, 2, 4], [3, 1, 4]]
 arr2 = [[5, 4, 3], [2, 4, 1], [3, 1, 1]]
 answer = [[0 for x in range(len(arr2[0]))]for _ in range(len(arr1))]
