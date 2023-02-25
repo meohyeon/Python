@@ -1,3 +1,4 @@
+#프로그래머스 튜플 level2
 s = input()
 answer = []
 s = s[2:-2].split('},{')
