@@ -1,4 +1,5 @@
 #프로그래머스 타겟넘버 level 2
+from itertools import product
 numbers = list(map(int,input().split()))
 target = int(input())
 
@@ -14,3 +15,8 @@ def dfs(arr,target,cnt,value):
 
 dfs(numbers,target,0,0)
 print(answer)
+
+#다른풀이 product 중복 순열 사용 
+arr2 = [(x,-x)for x in numbers]
+answer2 = [sum(x)for x in product(*arr2)]
+print(answer2.count(target))
