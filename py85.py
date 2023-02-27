@@ -4,16 +4,16 @@ numbers = list(map(int,input().split()))
 target = int(input())
 
 answer = 0
-def dfs(arr,target,cnt,value):
+def dfs(arr,target,value):
     global answer
-    if cnt == len(arr):
+    if 0 == len(arr):
         if value == target:     
             answer += 1 
         return
-    dfs(arr,target,cnt+1,value+arr[cnt])
-    dfs(arr,target,cnt+1,value-arr[cnt])
+    dfs(arr[1:],target,value+arr[0])
+    dfs(arr[1:],target,value-arr[0])
 
-dfs(numbers,target,0,0)
+dfs(numbers,target,0)
 print(answer)
 
 #다른풀이 product 중복 순열 사용 
