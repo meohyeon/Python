@@ -1,0 +1,9 @@
+n = int(input())
+string = list(input())
+
+for i in range(n-1):
+    str2 = list(input())
+    for j in range(len(string)):
+        if string[j] != str2[j]:
+            string[j] = '?'
+print("".join(string))
