@@ -12,3 +12,11 @@ for i in range(len(n)-1):
         answer = "YES"
         break
 print(answer)
+
+#파이썬 3.8 부터 나온 방법 math,prod
+answer2 = "NO"
+for i in range(len(n)-1):
+    if math.prod(n[:i+1]) == math.prod(n[i+1:]):
+        answer2 = "YES"
+        break
+print(answer2)
