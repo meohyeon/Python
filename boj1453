@@ -1,0 +1,4 @@
+n = int(input())
+arr1 = list(map(int,input().split()))
+arr2 = set(arr1)
+print(len(arr1)-len(arr2))
