@@ -1,0 +1,6 @@
+import datetime
+a, b = map(int,input().split())
+
+x = datetime.date(2007,a,b)
+answer = ["MON","TUE","WED","THU","FRI","SAT","SUN"]
+print(answer[x.weekday()])
