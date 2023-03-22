@@ -1,0 +1,6 @@
+a, b = map(int,input().split())
+a = int(str(a),2)
+b = int(str(b),2)
+
+answer = bin(a+b)
+print(answer[2:])
